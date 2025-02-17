@@ -47,6 +47,7 @@
     color: var(--selectionText);
 }
 
+
 html,
 body{
     margin: 0;
@@ -56,6 +57,7 @@ body{
     scroll-padding-top: -webkit-calc(var(--navHeight) + 30);
     scroll-padding-top: -moz-calc(var(--navHeight) + 30);
     scroll-padding-top: calc(var(--navHeight) + 30);
+    overflow-x: hidden;
 }
 
 img{
