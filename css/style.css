@@ -1079,3 +1079,24 @@ a.fc-white{
 .text-center{
     text-align: center;
 }
+
+.img-principal{
+    display: block; /* Evita márgenes extra */
+    margin: 0 auto; /* Centra horizontalmente */
+}
+.btn-custom{
+    display: inline-block;
+    padding: 6px 12px; /* Tamaño del botón */
+    font-size: 14px; /* Tamaño de fuente pequeño */
+    font-weight: 500;
+    color: #6c757d; /* Color del texto similar a btn-outline-secondary */
+    background-color: transparent; /* Sin fondo */
+    border: 2px solid #6c757d; /* Borde similar a outline-secondary */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: all 0.3s ease-in-out; /* Transición suave */
+}
+
+.btn-custom:hover {
+    background-color: #6c757d; /* Color de fondo en hover */
+    color: white; /* Color de texto en hover */
+}
