@@ -430,6 +430,8 @@
                 <p>
                     Nuestra misión es brindar soluciones tecnológicas innovadoras y a la medida, diseñadas para optimizar procesos y potenciar negocios, asegurando que cada usuario experimente satisfacción, eficiencia y crecimiento. 
                 </p>
+                <a class="color-negro btn-custom"  href="aviso-privacidad.html" target="_blank">Aviso de Privacidad</a>
+                <a class="color-negro btn-custom"  href="cookies.html" target="_blank">Cookies</a>
                 
             </div>
             <!-- FOOTER WEBSITE MOTO END -->
@@ -523,6 +525,11 @@
         </div>
     </footer>
     <!-- FOOTER END -->
+
+    <div id="cookiePopup" class="cookie-popup">
+        <p>Este sitio utiliza cookies y almacenamiento local para mejorar la experiencia del usuario. Al continuar navegando, aceptas nuestra <a href="aviso-privacidad.html" target="_blank">Política de Privacidad</a> y <a href="cookies.html" target="_blank">Política de Cookies</a>.</p>
+        <button id="acceptCookies">Aceptar</button>
+    </div>
     
 <!-- Incluye los scripts whatsapp-->
 <script src="./plugin/components/jQuery/jquery-1.11.3.min.js"></script>
@@ -539,6 +546,23 @@
     AOS.init({
         duration: 1000, // Duración de la animación en ms
         once: true, // La animación solo se ejecuta una vez
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let popup = document.getElementById("cookiePopup");
+        let acceptButton = document.getElementById("acceptCookies");
+    
+        // Verificar si el usuario ya aceptó
+        if (!localStorage.getItem("cookiesAccepted")) {
+            popup.style.display = "block";
+        }
+    
+        acceptButton.addEventListener("click", function () {
+            localStorage.setItem("cookiesAccepted", "true");
+            popup.style.display = "none";
+        });
     });
 </script>
 
