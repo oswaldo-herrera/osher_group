@@ -136,8 +136,18 @@
                         <i class="bi bi-youtube"></i>
                         Youtube
                     </a>
+                    <form id="contact-form" class="message-form mt-50 mb-25">
+                        <span class="fs-h4 fc-primary mb-15">Envíanos un mensaje</span>
+                        <div class="row mb-20">
+                            <input type="text" id="message-name" name="from_name" placeholder="Tu nombre" required>
+                            <input type="email" id="message-email" name="from_email" placeholder="Tú correo" required>
+                        </div>
+                        <input type="text" id="message-subject" name="subject" class="mb-20" placeholder="Título">
+                        <textarea id="message-message" name="message" rows="5" placeholder="Mensaje"></textarea>
+                        <button type="submit" class="btn-bg1 border-round mt-20">Enviar Mensaje</button>
+                    </form>
     
-                    <form action="#" class="message-form mt-50 mb-25">
+                    <!-- <form action="#" class="message-form mt-50 mb-25">
                         <span class="fs-h4 fc-primary mb-15">Envíanos un mensaje</span>
                         <div class="row mb-20">
                             <input type="text" id="message-name" placeholder="Tu nombre" aria-label="Input for your name" required>
@@ -146,7 +156,7 @@
                         <input type="text" id="message-subject" aria-label="Input for your message subject" class="mb-20" placeholder="Título">
                         <textarea id="message-message" rows="5" placeholder="Mensaje" aria-label="Input for writing message"></textarea>
                         <button type="submit" class="btn-bg1 border-round mt-20">Enviar Mensaje</button>
-                    </form>
+                    </form> -->
                 </div>
                 <!-- CONTACT INFO END -->
 
@@ -258,6 +268,36 @@
         </div>
     </footer>
     <!-- FOOTER END -->
+<!-- Agrega EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        emailjs.init("service_edbuc9c"); // Reemplaza con tu User ID de EmailJS
+
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que la página se recargue
+
+            // Capturar los valores del formulario
+            let params = {
+                from_name: document.getElementById("message-name").value,
+                from_email: document.getElementById("message-email").value,
+                subject: document.getElementById("message-subject").value,
+                message: document.getElementById("message-message").value
+            };
+
+            // Enviar el correo usando EmailJS
+            emailjs.send("service_edbuc9c", "template_qskm7q9", params)
+                .then(function (response) {
+                    alert("Mensaje enviado correctamente. ¡Gracias!");
+                    document.getElementById("contact-form").reset(); // Limpiar formulario
+                }, function (error) {
+                    alert("Error al enviar el mensaje. Intenta de nuevo.");
+                    console.error("Error:", error);
+                });
+        });
+    });
+</script>
+
 
 </body>
 </html>
