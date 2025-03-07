@@ -120,7 +120,7 @@
                     </a>
                     
                     <span class="fs-h4 mb-15 mt-25 fc-primary">Siguenos en Redes Sociales:</span>
-                    <a href="#" class="display-inblock mr-10">
+                    <a href="https://www.facebook.com/oshertecnologias" target="_blank" class="display-inblock mr-10">
                         <i class="bi bi-facebook"></i>
                         Facebook
                     </a>
@@ -128,15 +128,15 @@
                         <i class="bi bi-instagram"></i>
                         Instagram
                     </a>
-                    <a href="#" class="display-inblock mr-10">
-                        <i class="bi bi-twitter"></i>
-                        Twitter
+                    <a href="https://x.com/OSHER_Oswa" target="_blank" class="display-inblock mr-10 d-none">
+                        <i class="bi bi-x"></i>
+                        
                     </a>
-                    <a href="#" class="display-inblock mr-10">
+                    <a href="https://www.youtube.com/channel/UCzgojXZX8JFfpwLOOd_rHvw" target="_blank" class="display-inblock mr-10">
                         <i class="bi bi-youtube"></i>
                         Youtube
                     </a>
-                    <form id="contact-form" class="message-form mt-50 mb-25">
+                    <form method=POST id="contact-form" class="message-form mt-50 mb-25">
                         <span class="fs-h4 fc-primary mb-15">Envíanos un mensaje</span>
                         <div class="row mb-20">
                             <input type="text" id="message-name" name="from_name" placeholder="Tu nombre" required>
@@ -267,34 +267,44 @@
             <small>&copy; osher - Copyright 2025</small>
         </div>
     </footer>
-    <!-- FOOTER END -->
+    <!-- FOOTER END service_edbuc9c  template_qskm7q9-->
 <!-- Agrega EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    (function() {
         emailjs.init("service_edbuc9c"); // Reemplaza con tu User ID de EmailJS
+    })();
 
-        document.getElementById("contact-form").addEventListener("submit", function (event) {
-            event.preventDefault(); // Evita que la página se recargue
-
-            // Capturar los valores del formulario
-            let params = {
-                from_name: document.getElementById("message-name").value,
-                from_email: document.getElementById("message-email").value,
-                subject: document.getElementById("message-subject").value,
-                message: document.getElementById("message-message").value
-            };
-
-            // Enviar el correo usando EmailJS
-            emailjs.send("service_edbuc9c", "template_qskm7q9", params)
-                .then(function (response) {
-                    alert("Mensaje enviado correctamente. ¡Gracias!");
-                    document.getElementById("contact-form").reset(); // Limpiar formulario
-                }, function (error) {
-                    alert("Error al enviar el mensaje. Intenta de nuevo.");
-                    console.error("Error:", error);
-                });
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        // Mostrar alerta de carga mientras se envía el mensaje
+        Swal.fire({
+            title: "Enviando...",
+            text: "Por favor espera...",
+            icon: "info",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            },
         });
+
+        emailjs.sendForm("service_edbuc9c", "template_qskm7q9", this,"oTO-oMExxcxv8z4BU")
+            .then(function() {
+                Swal.fire({
+                    title: "¡Enviado!",
+                    text: "Tu mensaje ha sido enviado con éxito.",
+                    icon: "success",
+                });
+            }, function(error) {
+                Swal.fire({
+                    title: "Error",
+                    text: "Hubo un problema al enviar el mensaje. Inténtalo de nuevo.",
+                    icon: "error",
+                });
+            });
     });
 </script>
 
